@@ -1,0 +1,30 @@
+[DESC:]
+--------------------------------------------------------------------------------
+00_install_prereqs.sh	- installs all needed packages, generates locale,
+			  creates swap file in case of need, needs sudo. run once
+01_dl_ros_build.sh	- downloads build branch of meta-ros repo with all needed
+			  build instructions and configs (not sources). run once
+02_build.sh		- downloads all sources and builds working image. rerun
+			  every time you do changes. uses 'kas' tool to build
+03_flash.sh		- use it with param like 'sda' to flash image onto device,
+			  be careful to select proper device! needs sudo
+check_swap.sh		- checks and creates a swapfile in case of need. swapfile
+			  size needed to use 20 jobs is like 16Gb. needs sudo.
+			  (called inside of 00_install_prereqs.sh)
+
+[USAGE:]
+--------------------------------------------------------------------------------
+For a first run use next sequence:
+---
+./00_install_prereqs.sh
+./01_dl_ros_build.sh
+./02_build.sh
+./03_flash.sh sda
+
+To rebuild image just use:
+---
+./02_build.sh
+./03_flash.sh sda
+
+Be careful to use correct disk name with 03_flash.sh!!!
+
