@@ -28,4 +28,7 @@ python3 -m venv venv
 source venv/bin/activate
 pip3 install kas
 
+echo -e "${BLUE}[checking swap] ${NC}"
+./check_swap.sh
+
 echo -e "${BLUE}[all done] ${NC}"
