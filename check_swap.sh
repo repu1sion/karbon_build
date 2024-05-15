@@ -13,6 +13,13 @@ else
 	echo "swap size is :" $SIZE "Mb"
 	if [ $SIZE -lt 16000 ]; then
 		NEED_SWAP=1
+	else
+		echo "checking is swap mounted"
+		sudo swapon --show | grep swapfile
+		if [ $? -eq "1" ]; then
+			echo "mounting swap"
+			sudo swapon /swapfile
+		fi
 	fi
 fi
 
